@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CALCULATOR</title>
+</head>
+<style>
+    #navbar{
+            text-align:center;
+        }
+        #navbar li{
+            Display:inline;
+            text-decoration:none;
+            padding:20px;
+            width:200px;
+            border-style:solid;
+            background-image:url("http://we-mobi.com/wp-content/uploads/2014/10/appinventor_ai_ryan3018_MLG_Soundboard.png");
+            background-size:50px;
+        }
+        #navbar a{
+            text-decoration:none;
+            color:white;
+        }
+</style>
+<body>
+	<link rel="stylesheet" type="text/css" href="calculator.js">
+ 	        <div id="navbar">
+                <ul>
+           <li><a href="index.HTML">Welcome</a></li>
+            <li><a href="aboutme.HTML">About Me</a></li>
+            <li><a href="htmlpage.HTML">HTML 5</a></li>
+            <li><a href="computerhardware.HTML">Computer Hardware</a></li>
+            <li><a href="info.html">Info page</a></li>
+            <li><a href="todolist.html">ToDoList</a></li>
+            <li><a href="calc.html">calculator</a></li>
+            <li><a href="randomGenerator.HTML">random page</a></li>
+        </ul>
+    </div>
+
+<body>
+ 
+<input type ="text" name="Number1" style="width:50px;" id="Number1">
+    <select id="DropdownMenu1">
+  <option value="+">+</option>
+  <option value="-">-</option>
+  <option value="x">×</option>
+  <option value="÷">÷</option>
+  <option value="^">^</option>
+    </select>
+    <input type ="text" name="Number2" style="width:50px;" id="Number2">
+
+    <input type="button" value="Calculate" id="submitButton" />
+
+    <p>The answer is: <span id="Answer"></span></p>
+<script src="calc.js" ></script>
+
+</body>
+</html>
