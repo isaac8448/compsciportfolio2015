@@ -1,5 +1,3 @@
-// JavaScript File
-
 var button = document.getElementById("button");
 var x = 0;
 
@@ -12,7 +10,6 @@ function randomizePage(){
     document.getElementById("body").style.backgroundColor = randomColor();
 document.body.appendChild( randomElement()   );
 document.body.appendChild(randomElement2()   );
-document.body.appendChild(randomElement3()   );
 }
 /*This function is allowing the two random elements that I have able to be pressed and ot will use all three at the same time*/
 
@@ -32,9 +29,10 @@ function randomElement(){
 /*This code runs the random word and it changes the different background 
 color the word is in as well as changes the word font and makes it so that 
 the button can be spammed and it will still work also it moves it to anywhere on the page*/
+
 function randomElement2(){
-    var tempL2 = document.createElement("div");
-    tempL2.innerHTML = randomNumber();
+    var tempL2 = document.createElement("img");
+    tempL2.src = randomImage();
     sound.play();
     tempL2.style.backgroundColor = randomColor();
     tempL2.style.color = randomColor();
@@ -43,20 +41,8 @@ function randomElement2(){
     tempL2.style.left = Math.floor((Math.random() * document.body.scrollWidth ) + 1) + "px";
     return tempL2;
 }
+
 /*This code does the same thing as the functin above except this displays numbers*/
-function randomElement3(){
-    var tempL3 = document.createElement("img");
-    tempL3.src = randomImage();
-    sound.play();
-    tempL3.style.backgroundColor = randomColor();
-    tempL3.style.height = "200px";
-    tempL3.style.width = "200px";
-    tempL3.style.color = randomColor();
-    tempL3.style.position = "absolute"
-    tempL3.style.top = Math.floor((Math.random() * document.body.scrollHeight ) + 1) + "px";
-    tempL3.style.left = Math.floor((Math.random() * document.body.scrollWidth ) + 1) + "px";
-    return tempL3;
-}
 function randomColor(){
     var color;
     sound.play();
@@ -75,17 +61,8 @@ function randomWord(){
     return word;
 }
 /*This also does the same thing as the randomcolor function except it is used for words*/
-function randomNumber(){
-    var number;
-    var numbers = ["84", "69", "96", "21", "48", "53", "650", "88", "6", "10", "7", "1", "94", "72","66"]
-    x =  Math.floor(( Math.random()* numbers.length));
-    number = numbers[x];  
-    return number;
-}
-/*This also does fdthe same thing as the randomcolor function except it is used for numbers*/
 function randomImage(){
     var imageSrc = ["https://i.ytimg.com/vi/ISsLgApJSCk/hqdefault.jpg", "https://i.ytimg.com/vi/lhTWYFhTHqw/hqdefault.jpg", "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/5/005/07f/064/1d0dd06.jpg", "https://i.ytimg.com/vi/sYxQwPyp6Kw/hqdefault.jpg", "https://pbs.twimg.com/media/CbqjK26UYAEX7KZ.png", "https://i.ytimg.com/vi/eyPen81KQhw/maxresdefault.jpg", "http://img.ifcdn.com/images/0fd1966920d5d6e4853aa39e7eff5b7a706d3a86075c2c05fb468c3c85b7f2fb_1.jpg", "https://pbs.twimg.com/media/Bw_Rb8_CcAAnSZf.jpg", "https://pbs.twimg.com/profile_images/614589470835216384/j9aQ8-2d.jpg", "http://www.gifplanets.co.uk/gif3%20(8).gif", "https://media.giphy.com/media/3oEduQ62pRN6Zaugnu/giphy.gif", "http://vignette1.wikia.nocookie.net/mlg-frag/images/2/2e/Coool.gif/revision/latest?cb=20141124012931"];
     x =  Math.floor(( Math.random()* imageSrc.length));
     return imageSrc[x];
 }
-//this is also like the other ones but instead this code selects a random link to be selected

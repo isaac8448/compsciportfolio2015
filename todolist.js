@@ -3,7 +3,7 @@ var todo = document.getElementById('todolist'),
     form = document.getElementById('myform'),
     field = document.getElementById('newitem'),
     dropdown= document.getElementById("dropdown");
-
+//these are the variables that i created in order so that they can all do specific things down bel
 
 
 form.addEventListener( 'submit', function(evt) {
@@ -26,7 +26,7 @@ text + '</div>';
   if (dropdown.value == "none"){
     todo.innerHTML += '<div>' + text + '</div>'
   }
-
+//these are all allowing it to have a different font when you select it in the navbar 
   evt.preventDefault();
 }, false);
 
@@ -42,6 +42,6 @@ todo.addEventListener( 'click', function(evt) {
   else{
     tar.style.textDecoration = "line-through";
   }
-
+//this code is allowing it to make it so that when the word is clicked it will have a line appear through it
   evt.preventDefault();
 }, false);

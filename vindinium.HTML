@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>VINDINIUM</title>
+    <link rel="stylesheet" type="text/css" href="navbar.css">
+</head>
+<style type="text/css">
+    #navbar {
+        text-align: center;
+    }
+    
+    #navbar li {
+        Display: inline;
+        text-decoration: none;
+        padding: 20px;
+        width: 550px;
+        border-style: solid;
+        background-image: url("http://1.media.dorkly.cvcdn.com/49/40/17d4d1f4f0f8846f494ce50ed11c12a0.gif");
+        background-size: 110px;
+    }
+    
+    #navbar a {
+        text-decoration: none;
+        color: blue;
+    }
+    
+    p {
+        color: rgb(0, 0, 0);
+        text-align: center;
+        font-size: 30px;
+        font-family: "sans-serif";
+    }
+    
+    #vindiniumCode {
+        font-size: 30px;
+        text-align: center;
+    }
+    
+    #vindiniumPicture {
+        text-align: center;
+        /*height: 250px;*/
+    }
+    #vindiniumPicture img{
+        /*text-align: center;*/
+        height: 500px;
+        padding-top: 30px;
+    }
+</style>
+
+<body>
+    <div id="navbar">
+        <ul>
+            <li><a href="index.HTML">Welcome</a></li>
+            <li><a href="aboutme.HTML">About Me</a></li>
+            <li><a href="htmlpage.HTML">HTML 5</a></li>
+            <li><a href="computerhardware.HTML">Computer Hardware</a></li>
+            <li><a href="info.html">Info page</a></li>
+            <li><a href="todolist.html">ToDoList</a></li>
+            <li><a href="calc.html">calculator</a></li>
+            <li><a href="randomGenerator.HTML">random page</a></li>
+            <li><a href="vindinium.HTML">Vindinium</a></li>
+        </ul>
+    </div>
+    <div id="vindiniumPicture"><img src="https://s3.amazonaws.com/poly-screenshots.angel.co/Project/a0/120663/73d89cbf74dde0cacf22233ec6dc6a79-original.png"></div>
+
+    <p> Vindinium is a code based game where you have to use code in order to make your bot move around the map and attack other players as well</p>
+    <p>The way to win the game is by having as many gold mines as your bot can take and depending on how many mines you have your gold will go up and if you have the most by the end of the game you win</p>
+    <p>Also if you lose health you can code your bot to go to a tavern once it has a certain amount of health to go to a tavern and gain health by paying 2 gold</p>
+    <p><code><pre id = "vindiniumCode"><b>  
+    if(bot.yourBot.life < 40){
+            task="tavern";
+        }
+        
+        else if(bot.freeMines===[]){
+            task="hunt"
+        }
+        else{
+            task = "allmines";
+        };
+
+        </b></pre></code></p>
+    <p>what the code above does is it allows my bot to go to the tavern once it gets to 40 health it will go to the nearest tavern that the bot can find</p>
+    <p> Also the part under that piece of code is making it so that if the bot does not need to get health it will go attack</p>
+    <p> Finally the last part is making it so that the code will go to any of the nearest mines</p>
+    <p>As you can see this is what the code does and this is how we play the game</p>
+</body>
+</style>
+
+</html>
