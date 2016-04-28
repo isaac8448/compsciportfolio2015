@@ -29,4 +29,3 @@ soccer.addEventListener("click", function(){
     info2.innerHTML = "I have been taught by many different people but my dad was the first person to";
     info3.innerHTML = "I still actually love this sport as much as i did when i first played it";
 });
-        

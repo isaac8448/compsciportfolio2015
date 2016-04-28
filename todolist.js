@@ -3,7 +3,7 @@ var todo = document.getElementById('todolist'),
     form = document.getElementById('myform'),
     field = document.getElementById('newitem'),
     dropdown= document.getElementById("dropdown");
-//these are the variables that i created in order so that they can all do specific things down bel
+//these are the variables that i created in order so that they can all do specific things down bellow
 
 
 form.addEventListener( 'submit', function(evt) {
