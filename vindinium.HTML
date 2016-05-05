@@ -46,12 +46,12 @@
         height: 500px;
         padding-top: 30px;
     }
-    #header{
+    #title{
         text-align:center;
         font-size:30px;
         font-family:"sans-serif";
     }
-    #lol{
+    #Headers{
         text-align:center;
         font-size:25px;
         font-family:"sans-serif";
@@ -72,15 +72,65 @@
             <li><a href="vindinium.HTML">Vindinium</a></li>
         </ul>
     </div>
-    <h1 <div id="header">Vindinium</h1></div>
+    <h1 <div id="title">Vindinium</h1></div>
     <div id="vindiniumPicture"><img src="https://s3.amazonaws.com/poly-screenshots.angel.co/Project/a0/120663/73d89cbf74dde0cacf22233ec6dc6a79-original.png"></div>
-    <h2 <div id = "lol">How the game works</h2></div>
+    <h2 <div id = "Headers">How the game works</h2></div>
     <p> Vindinium is a code based game where you have to use code in order to make your bot move around the map and attack other players as well</p>
     <p>The way to win the game is by having as many gold mines as your bot can take and depending on how many mines you have your gold will go up and if you have the most by the end of the game you win</p>
     <p>Also if you lose health you can code your bot to go to a tavern once it has a certain amount of health to go to a tavern and gain health by paying 2 gold</p>
-    <h2 <div id = "lol">How the code works</h2></div>
+    <h2 <div id = "Headers">My Bot</h2></div>
+    <p>What my bot does is it does three things which is go to a tavern once it reaches a certain helath, collect the nearest mines to it, and attack other players</p>
+    <p>What this does is when we are playing the game it will allow my bots to be able to do all three of these functions so that way I can be able to win</p>
+    <p>These are components that I will go more in depth on how my bot does these thing but to some up how they work it depends on the health as well as how many mines it owns and what place it is in </p>
+    <p>clearly there are many different things that we can do with our bot and the possibilities are endless for what we can do with </p>
+    <h2 <div id = "Headers">How the code works</h2></div>
     <p><code><pre id = "vindiniumCode"><b>  
-    if(bot.yourBot.life < 40){
+    var Bot = require('bot');
+var PF = require('pathfinding');
+var bot = new Bot('oallanaq', 'arena', 'http://52.53.211.7:9000'); //Put your bot's code here and change training to Arena when you want to fight others.
+// var bot = new Bot('YOUR_KEY_HERE', 'arena', 'PRIVATE_SERVER_HERE'); //Put your bot's code here and change training to Arena when you want to fight others.
+var goDir;
+var Promise = require('bluebird');
+Bot.prototype.botBrain = function() {
+    return new Promise(function(resolve, reject) {
+        _this = bot;
+        //////* Write your bot below Here *//////
+        //////* Set `myDir` in the direction you want to go and then bot.goDir is set to myDir at the bottom *////////
+
+        /*                                      *
+         * This Code is global data!            *
+         *                                      */
+
+        // Set myDir to what you want and it will set bot.goDir to that direction at the end.  Unless it is "none"
+        var myDir;
+        var myPos = [bot.yourBot.pos.x, bot.yourBot.pos.y];
+
+        var enemyBots = [];
+        if(bot.yourBot.id != 1) enemyBots.push(bot.bot1);
+        if(bot.yourBot.id != 2) enemyBots.push(bot.bot2);
+        if(bot.yourBot.id != 3) enemyBots.push(bot.bot3);
+        if(bot.yourBot.id != 4) enemyBots.push(bot.bot4);
+        
+        var enemyMines = [];
+        if(bot.yourBot.id != 1)enemyMines = enemyMines.concat(bot.bot1.mines);
+        if(bot.yourBot.id != 2)enemyMines = enemyMines.concat(bot.bot2.mines);
+        if(bot.yourBot.id != 3)enemyMines = enemyMines.concat(bot.bot3.mines);
+        if(bot.yourBot.id != 4)enemyMines = enemyMines.concat(bot.bot4.mines);
+        
+        var allMines = enemyMines.concat(bot.freeMines)
+    </b></pre></code></p>
+    <p>What this code is doing is it is making it so that the code can be able to connect to the private server that we have created</p>
+    <p>As well the variables are showing the different ways where they find the nearest bot or mine to them and then the bot will locate it but it wont do anything yet until we add something else into it</p>
+<p><code><pre id = "vindiniumCode"><b>  
+        // console.log(enemyMines)
+        
+        /*                                      *
+         * This Code Decides WHAT to do         *
+         *                                      */
+        var task;
+        
+         
+        if(bot.yourBot.life < 40){
             task="tavern";
         }
         
@@ -92,10 +142,44 @@
         };
 
         </b></pre></code></p>
-    <p>what the code above does is it allows my bot to go to the tavern once it gets to 40 health it will go to the nearest tavern that the bot can find</p>
-    <p> Also the part under that piece of code is making it so that if the bot does not need to get health it will go attack</p>
-    <p> Finally the last part is making it so that the code will go to any of the nearest mines</p>
+        <p>what the code above does is it allows my bot to go to the tavern once it gets to 40 health it will go to the nearest tavern that the bot can find</p>
+        <p> Also the part under that piece of code is making it so that if the bot does not need to get health it will go attack an enemy player that is close buy untill it needs to go get health</p>    
+        <p> Finally the last part is making it so that the code will go to any of the nearest mines</p>
+    <p><code><pre id = "vindiniumCode"><b>  
+     /*                                      *
+         * This Code Determines HOW to do it    *
+         *                                      */
+
+        // This Code find the nearest freemine and sets myDir toward that direction //
+        if(task === "allmines") {
+            var closestMine = allMines[0];
+            for(i = 0; i < allMines.length; i++) {
+                if(bot.findDistance(myPos, closestMine) > bot.findDistance(myPos, allMines[i])) {
+                    closestMine = allMines[i];
+                }
+            }
+            console.log("Claiming all Mine!");
+            myDir = bot.findPath(myPos, closestMine);
+        }
+        if(task === "tavern") {
+            var closestTavern = bot.taverns[0]
+            for(i = 0; i < bot.taverns.length; i++ ){
+                if(bot.findDistance(myPos, closestTavern) > bot.findDistance(myPos, bot.freeMines[i])){
+                closestTavern = bot.taverns[i];
+            }
+        }
+        console.log("getting more health!");
+        myDir = bot.findPath(myPos, closestMine);
+        }
+    </b></pre></code></p>
+    <p>what this code is doing is running a task so when it fines the nearest mine it will go to it</p>
+    <p>As well it will also go to the nearest tavern once it notices that the health that it is at is below 40</p>
     <p>As you can see this is what the code does and this is how we play the game</p>
+    <h2 <div id = "Headers">What I learned about AI</h2></div>
+    <p>I learned lots of interesting things about AI the thing you can do is limitless with it</p>
+    <p>For example on our trip to stanford they were talking about how the coding classes there were very difficult but useful and a lot of them had used a lot of cool things with AI such as using Virtual Reality</p>
+    <p>AI has really interested me and in the future I definitley want to learn more because it can be used in more ways than people think it could be used to help with statistics for business and even health</p>
+    <p>AI is truly something that will grow in the future and be helpful to eceryone in the future</p>
 </body>
 </style>
 
